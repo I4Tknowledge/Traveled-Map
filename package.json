@@ -1,0 +1,11 @@
+{
+  "name": "unesco-csv-formatter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "csv-parser": "3.0.0",
+    "crypto": "1.0.1"
+  }
+}
