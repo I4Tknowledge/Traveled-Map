@@ -4,7 +4,6 @@ const csv = require("csv-parser");
 const { getPlaceString, inputFile, placesOutputFile } = require('./utils')
 
 const places = []
-// ETAPE 1: Récupérer le hashToPlacesMap et donner à ChatGPT pour le reverse Geocoding
 fs.createReadStream(inputFile)
     .pipe(csv())
     .on('data', async (row) => {
@@ -19,5 +18,5 @@ fs.createReadStream(inputFile)
     })
     .on('end', () => {
         fs.writeFileSync(placesOutputFile, JSON.stringify(places, null, 2));
-        console.log(`Places saved to ${placesFile}`);
+        console.log(`Places saved to ${placesOutputFile}`);
     });

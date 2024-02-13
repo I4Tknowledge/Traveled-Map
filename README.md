@@ -25,16 +25,18 @@ suffisante).
 ## Traitement des données
 
 1. Pour commencer, il faut exporter le fichier excel en csv et le placer dans files/export.csv
-2. Ensuite, il faut extraire les lieux de ce fichier en lançant `node getPlaces.js`
-3. L'opération précédente va créer un fichier dans `files/places.json`. Il faut prendre le contenu de ce fichier
-et, dans le fichier `files/places.js`, remplacer la variable `places` par le contenu copié.
-4. Demander à ChatGPT de convertir les places en coordonnées (détail dans la section suivante)
-5. Une fois les coordonnées récupérées de ChatGPT, remplacer la variable `coordinatesByChatGPT` du fichier 
+2. Ensuite, il faut installer les dépendances du projet avec `npm install`
+3. Ensuite, il faut extraire les lieux de ce fichier en lançant `node ./scripts/getPlaces.js`
+4. L'opération précédente va créer un fichier dans `files/places.json`. Il faut prendre le contenu de ce fichier
+et, remplacer la variable `places` par le contenu copié dans le fichier `files/places.js`.
+5. Demander à ChatGPT de convertir les places en coordonnées (voir détail dans la section suivante)
+6. Une fois les coordonnées récupérées de ChatGPT, remplacer la variable `coordinatesByChatGPT` du fichier 
 `files/coordinates.js` par la liste.
-6. Eventuellement, vérifier les doublons avec le script `node ./scripts/getDoublons.js` et les supprimer manuellement
-dans les coordonnées ET dans les places.
-7. Récupérer la donnée GeoJSON en lançant `node ./scripts/getMapGeoJsonData.js`
-8. Finalement, prendre cette donnée et remplacer dans la `data` de `map.addSource` du fichier `index.html`
+7. Éventuellement, vérifier les doublons avec le script `node ./scripts/getDoublons.js` et les supprimer manuellement
+dans les coordonnées ET dans les places. Autrement, les coordonnées en doublons vont être aléatoirement réparties dans
+une zone proche autour des coordonnées de base.
+8. Récupérer la donnée GeoJSON en lançant `node ./scripts/getMapGeoJsonData.js`
+9. Finalement, prendre cette donnée et remplacer dans la `data` de `map.addSource` du fichier `index.html`
 
 ### Récupération des coordonnées via ChatGTP
 
