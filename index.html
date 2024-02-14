@@ -121,7 +121,7 @@
     map.addControl(new mapboxgl.FullscreenControl()); // Ajoute le bouton plein écran
 
     map.on('load', function () {
-        map.loadImage('./images/marker.png', function (error, image) {
+        map.loadImage('https://i.ibb.co/M7VS1CV/marker.png', function (error, image) {
             if (error) throw error;
             map.addImage('blank-marker', image);
         });
