@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Carte des Organisations</title>
+
+    <!-- Copier l'ensemble des balises <link> et <style> -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet'/>
     <link
             rel="stylesheet"
@@ -17,7 +19,7 @@
             padding: 4px 6px;
         }
 
-        .page {
+        .unesco-example-page-style-tag {
             display: flex;
             flex: 1;
             height: 90VH;
@@ -96,7 +98,6 @@
         }
     </style>
 
-    <!-- Cette balise style est à prendre, pour l'affichage de la popup -->
     <style>
         .organisation-title {
             font-weight: 500;
@@ -190,7 +191,7 @@
 </head>
 
 <body>
-<div class="page">
+<div class="unesco-example-page-style-tag">
     <h1>Carte des organisations</h1>
     <p style="text-align: center">
         Cette page est une page de démonstration de l'intégration de la carte. <br>
@@ -198,6 +199,7 @@
         se trouve dans le fichier README.md du projet
     </p>
 
+    <!-- prendre l'ensemble de la div ci-dessous -->
     <div class="unesco-map-container">
         <div id='map' style="width: 100%; height: 100%;"></div>
         <div class="search-container">
@@ -257,7 +259,7 @@
     </div>
 </div>
 
-
+<!-- Copier l'ensemble des balises <script> -->
 <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
@@ -713,7 +715,6 @@
             return `<div class="organisation-description">${description}</div>`
         }
 
-        console.log({ description: escapeHTML(description) })
         return `<div class="organisation-description" data-description="${description}">${shortenDescription}... <a href="#" onclick="openDescriptionModal(this)">[Show more]</a></div>`
     }
 

@@ -8,39 +8,25 @@ affichage sur une carte.
 Le fichier `index.html` est un exemple d'affichage pour la page, mais le contenu peut être copié dans n'importe quelle
 page web.
 
-1. Prendre la `<div id='map' style="width: 100%; height: 100%;"></div>` et la placer dans le code HTML du site, 
+1. Prendre toute la `<div class="unesco-map-container">` et son contenu, et la placer dans le code HTML du site, 
 à l'endroit où la carte doit être affichée
-2. Prendre les deux balises scripts dans leur intégralité et les copier à la fin de la balise `<body>` de la page
-
-```
-<script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
-<script>
-    ...
-</script>
-```
-
-3. Le tour est joué, la carte devrait s'afficher (tant que la div qui contient la `<div id='map' ...></div>` a une taille
+2. Prendre l'ensemble des balises scripts dans leur intégralité et les copier à la fin de la balise `<body>` de la page
+3. Prendre l'ensemble des balises <link> et <style> en haut de page et les mettre dans la balise <head> du site si possible,
+sinon avant la `<div class="unesco-map-container">`. 
+4. Le tour est joué, la carte devrait s'afficher (tant que la div qui contient la `<div id='map' ...></div>` a une taille
 suffisante).
  
-## Traitement des données
+## Origine des données
 
-1. Pour commencer, il faut exporter le fichier excel en csv et le placer dans files/export.csv
-2. Ensuite, il faut installer les dépendances du projet avec `npm install`
-3. Ensuite, il faut extraire les lieux de ce fichier en lançant `node ./scripts/getPlaces.js`
-4. L'opération précédente va créer un fichier dans `files/places.json`. Il faut prendre le contenu de ce fichier
-et, remplacer la variable `places` par le contenu copié dans le fichier `files/places.js`.
-5. Demander à ChatGPT de convertir les places en coordonnées (voir détail dans la section suivante)
-6. Une fois les coordonnées récupérées de ChatGPT, remplacer la variable `coordinatesByChatGPT` du fichier 
-`files/coordinates.js` par la liste.
-7. Éventuellement, vérifier les doublons avec le script `node ./scripts/getDoublons.js` et les supprimer manuellement
-dans les coordonnées ET dans les places. Autrement, les coordonnées en doublons vont être aléatoirement réparties dans
-une zone proche autour des coordonnées de base.
-8. Récupérer la donnée GeoJSON en lançant `node ./scripts/getMapGeoJsonData.js`
-9. Finalement, prendre cette donnée et remplacer dans la `data` de `map.addSource` du fichier `index.html`
+Les données proviennent maintenant d'un fichier GoogleSheet qui est récupéré en CSV.
+Le lien du fichier : https://docs.google.com/spreadsheets/d/1g93Y3vQMHQpJ8tNfCfTFkl51MiwHSgZBkKj9NSAnjK8
+
+L'ajout d'organisation peut donc se faire directement depuis ce fichier
 
 ### Récupération des coordonnées via ChatGTP
 
-Il faut utiliser le prompt suivant sur ChatGPT 3.5 :
+Si jamais vous vouliez ajouter beaucoup d'organisations d'un coup, vous pouvez essayer de récupérer leurs coordonnées 
+via ChatGPT avec le prompt suivant:
 
 ```
 Donne moi, dans le même ordre, et sans ignorer d'élément (quitte à mettre une chaine vide si besoin),
