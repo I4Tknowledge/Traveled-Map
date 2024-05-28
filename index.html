@@ -116,6 +116,11 @@
         .organisation-description {
             margin-top: 6px;
         }
+        .organisation-description-show-more {
+            text-decoration: underline;
+            color: #2c67f0;
+            cursor: pointer;
+        }
 
         .organisation-website-link {
             display: inline-block;
@@ -715,7 +720,7 @@
             return `<div class="organisation-description">${description}</div>`
         }
 
-        return `<div class="organisation-description" data-description="${description}">${shortenDescription}... <a href="#" onclick="openDescriptionModal(this)">[Show more]</a></div>`
+        return `<div class="organisation-description" data-description="${description}">${shortenDescription}... <span class="organisation-description-show-more" role="button" onclick="openDescriptionModal(this)">[Show more]</span></div>`
     }
 
     const openDescriptionModal = (e) => {
